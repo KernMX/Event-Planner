@@ -11,7 +11,11 @@
 	</header>
 	<br>
 	<br>
-	<body>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="static/scraper.js"></script>
+	<script src="static/categorySelection.js"></script>
+	<script src="static/userLocation.js"></script>
+	<body onload="initialize()">
 		<table>
 			<div class="Row">
 				<div class="left column" style="text-align: center">
@@ -36,13 +40,17 @@
 				<br><br>
 					<select style="font-size:36px; font-family: Arial;">
 					  <option value="0">Select Budget: </option>
-					  <option value="1">$0 - $40</option>
-					  <option value="2">$40 - $80</option>
-					  <option value="3">$80 - $120</option>
+					  <option value="1">$40</option>
+					  <option value="2">$80</option>
+					  <option value="3">$120</option>
 					  <option value="4">$120+</option>
 					</select>
 				</div>
-			</div>
+				<div class="left column" style="text-align: center">
+					<br><br>
+					<p id="userloc" style="font-size:36px; font-family: Arial;"></p>
+					<br><br>
+				</div>
 		</table>
 	</body>
 

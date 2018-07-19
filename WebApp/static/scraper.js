@@ -1,7 +1,7 @@
 //Parameters
-var category = document.getElementById('category').value;
-var max_price = document.getElementById('max_price').value;
-var location = document.getElementById('location').value;
+//var category = document.getElementById('category').value;
+//var max_price = document.getElementById('max_price').value;
+//var location = document.getElementById('location').value;
 
 var scraper = require('google-search-scraper');
 var DeathByCaptcha = require('deathbycaptcha');
