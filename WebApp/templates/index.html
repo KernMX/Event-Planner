@@ -11,7 +11,12 @@
 	</header>
 	<br>
 	<br>
-	<body>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="https://github.com/thibauts/node-google-search-scraper/blob/master/index.js"></script>
+	<script src="static/scraper.js"></script>
+	<script src="static/dateattrs.js"></script>
+	<script src="static/userLocation.js"></script>
+	<body onload="initialize(); dateattrs();">
 		<table>
 			<div class="Row">
 				<div class="left column" style="text-align: center">
@@ -46,7 +51,20 @@
 					<check
 				</div>
 			</div>
+			<div class="Row">
+				<div class="left column" style="text-align: center">
+					<p id="userloc" style="font-size:36px; font-family: Arial;"></p>
+				</div>
+				<div class="right column" style="text-align: center">
+					<br><br>
+					<input id="date" type="date" style="font-size:36px; font-family: Arial;" placeholder="YYYY-MM-DD">
+					<br><br>
+				</div>
+			</div>
 		</table>
+		<button onclick="scraper()" >
+			SEARCH
+		</button>
 	</body>
 
 	<footer>
