@@ -11,13 +11,17 @@
 	</header>
 	<br>
 	<br>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
+	<!--
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCcV8nC04DsKPmqoifu2Q3DatGJ8Oxz3T0&sensor=false&callback=initializeMap&libraries=places"></script>
+	-->
 	<script type="text/javascript" src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-  <script type="text/javascript" src="node_modules/google-search-scraper/index.js"></script>
-	<script src="static/scraper.js"></script>
+	<!-- <script src="static/scraper.js"></script> -->
+	<script src="static/scrapertest.js"></script>
 	<script src="static/dateattrs.js"></script>
 	<script src="static/userLocation.js"></script>
-	<body onload="initialize(); dateattrs();">
+
+	<body onload="initialize(); dateattrs(); initMap();">
 		<table>
 			<div class="Row">
 				<div class="left column" style="text-align: center">
@@ -63,13 +67,19 @@
 				</div>
 			</div>
 		</table>
-		<button onclick="scraper()" >
+		<button onclick="Markers()" >
 			SEARCH
 		</button>
+		<script async defer
+		src=
+"https://maps.googleapis.com/maps/api/js?key=AIzaSyCZc_SQlrTO7CchthZ4lyN3F73RDzjZSQM&callback=initMap">
+		</script>
 	</body>
 
 	<footer>
-		FOOTER
+		<!--The div element for the map -->
+		<div id="map" style="width:400px;height:400px;"></div>
+
 	</footer>
 
 </html>
