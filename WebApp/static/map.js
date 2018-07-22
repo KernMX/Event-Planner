@@ -26,7 +26,22 @@ function initMap() {
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
+    //Call userLocation()?
   }
+}
+
+//Function for setting the map to a user-defined location
+function usersetLocation() {
+  //TEST: set to  0, 0
+  pos = {
+    lat: 0.0,
+    lng: 0.0
+  };
+
+  infoWindow.setPosition(pos);
+  infoWindow.setContent('Location set.');
+  infoWindow.open(map);
+  map.setCenter(pos);
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
