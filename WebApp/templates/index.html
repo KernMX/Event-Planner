@@ -14,7 +14,7 @@
 	<script src="static/map.js"></script>
 	<script src="static/datareset.js"></script>
 	<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZc_SQlrTO7CchthZ4lyN3F73RDzjZSQM&callback=initMap&libraries=place">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcV8nC04DsKPmqoifu2Q3DatGJ8Oxz3T0&callback=initMap&libraries=place">
   </script>
 
 	<body onload="dataReset(); initMap();">
@@ -41,13 +41,13 @@
 					<fieldset>
 						<legend style="text-align: left">Select a maxiumum cost category</legend>
 						<input type="radio" value"$" name="cost" onclick="costSelection(this.value)" />
-			      <label for="$">$</label>
+			      <label for="$">$</label><br>
 			      <input type="radio" value="$$" name="cost" onclick="costSelection(this.value)" />
-			      <label for="$$">$$</label>
+			      <label for="$$">$$</label><br>
 				    <input type="radio" value="$$$" name="cost" onclick="costSelection(this.value)" />
-				    <label for="$$$">$$$</label>
+				    <label for="$$$">$$$</label><br>
 				    <input type="radio" value="$$$$" name="cost" onclick="costSelection(this.value)" />
-				     <label for="$$">$$$$</label>
+				     <label for="$$">$$$$</label><br>
 
 						Selected Cost Category: <input type="text" id="result" style="text-align: left">
 					</fieldset>

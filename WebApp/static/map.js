@@ -102,7 +102,6 @@ function Markers() {
   }
 
   var request;
-
   //Do the actual search query
   service = new google.maps.places.PlacesService(map);
   for (var i = 0; i < category.length; i++) {
@@ -135,7 +134,7 @@ function createMarker(place) {
     map: map,
     position: place.geometry.location
   });
-  markers.push(marker);
+  //markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(place.name);
     infoWindow.open(map, this);
