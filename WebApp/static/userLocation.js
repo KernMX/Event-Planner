@@ -2,7 +2,7 @@
 if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 } else {
-  alert("This App requires user location access to function properly, please refresh the page and allow user location access.");
+  alert("This App requires user location access to function properly, please reload the page and allow user location access.");
 }
 
 function geoError() {

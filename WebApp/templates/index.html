@@ -11,75 +11,48 @@
 	</header>
 	<br>
 	<br>
-	<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
-	<!--
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCcV8nC04DsKPmqoifu2Q3DatGJ8Oxz3T0&sensor=false&callback=initializeMap&libraries=places"></script>
-	-->
-	<script type="text/javascript" src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-	<!-- <script src="static/scraper.js"></script> -->
-	<script src="static/scrapertest.js"></script>
-	<script src="static/dateattrs.js"></script>
-	<script src="static/userLocation.js"></script>
+	<script src="static/map.js"></script>
+	<script src="static/datareset.js"></script>
 
-	<body onload="initialize(); dateattrs(); initMap();">
+	<body onload="dataReset(); initMap();">
+		<div style="text-align: center">
+			<p id="userloc" style="font-size:36px; font-family: Arial;"></p>
+		</div>
 		<table>
 			<div class="Row">
 				<div class="left column" style="text-align: center">
 					<br><br>
 					<select id="category" style="font-size:36px; font-family: Arial;">
 					  <option value="0">Select Event Type:</option>
-					  <option value="1">Breakfast</option>
-					  <option value="2">Lunch</option>
-					  <option value="3">Dinner</option>
-            <option value="4">Theatre</option>
-					  <option value="5">Movies</option>
-					  <option value="6">Bar and Brewery</option>
-					  <option value="7">Concerts</option>
-					  <option value="8">Camping</option>
-					  <option value="9">Parks</option>
-					  <option value="10">Pet Friendly</option>
-					  <option value="11">Special Events</option>
+					  <option value="1">Food</option>
+            <option value="2">Shopping</option>
+					  <option value="3">Movies</option>
+					  <option value="4">Night Life</option>
+					  <option value="5">Relaxation</option>
+					  <option value="6">Camping</option>
+					  <option value="7">Parks</option>
+					  <option value="8">Local Attractions</option>
 					</select>
 					<br><br>
 				</div>
 				<div class="right column" style="text-align: center">
 				<br><br>
-					<select id="max_price" style="font-size:36px; font-family: Arial;">
-					  <option value="0">Select Budget: </option>
-					  <option value="1">$40</option>
-					  <option value="2">$80</option>
-					  <option value="3">$120</option>
-					  <option value="4">$120+</option>
-					</select>
-				</div>
-				<div>
-					<check
-				</div>
-			</div>
-			<div class="Row">
-				<div class="left column" style="text-align: center">
-					<p id="userloc" style="font-size:36px; font-family: Arial;"></p>
-				</div>
-				<div class="right column" style="text-align: center">
-					<br><br>
-					<input id="date" type="date" style="font-size:36px; font-family: Arial;" placeholder="YYYY-MM-DD">
-					<br><br>
+					<input type="text" id="radius" style="font-size:36px; font-family: Arial;" placeholder="Enter in a search radius (meters)"></input>
 				</div>
 			</div>
 		</table>
-		<button onclick="Markers()" >
+		<button onclick="Markers()">
 			SEARCH
 		</button>
 		<script async defer
 		src=
-"https://maps.googleapis.com/maps/api/js?key=AIzaSyCZc_SQlrTO7CchthZ4lyN3F73RDzjZSQM&callback=initMap">
+"https://maps.googleapis.com/maps/api/js?key=AIzaSyCZc_SQlrTO7CchthZ4lyN3F73RDzjZSQM&callback=initMap&libraries=places">
 		</script>
-	</body>
-
-	<footer>
 		<!--The div element for the map -->
 		<div id="map" style="width:400px;height:400px;"></div>
-
+	</body>
+	<footer>
+		FOOTER
 	</footer>
 
 </html>
