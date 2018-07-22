@@ -13,31 +13,53 @@
 	<br>
 	<script src="static/map.js"></script>
 	<script src="static/datareset.js"></script>
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZc_SQlrTO7CchthZ4lyN3F73RDzjZSQM&callback=initMap&libraries=place">
+  </script>
 
 	<body onload="dataReset(); initMap();">
-		<div style="text-align: center">
-			<p id="userloc" style="font-size:36px; font-family: Arial;"></p>
-		</div>
 		<table>
 			<div class="Row">
 				<div class="left column" style="text-align: center">
 					<br><br>
-					<select id="category" style="font-size:36px; font-family: Arial;">
-					  <option value="0">Select Event Type:</option>
-					  <option value="1">Food</option>
-            <option value="2">Shopping</option>
-					  <option value="3">Movies</option>
-					  <option value="4">Night Life</option>
-					  <option value="5">Relaxation</option>
-					  <option value="6">Camping</option>
-					  <option value="7">Parks</option>
-					  <option value="8">Local Attractions</option>
-					</select>
+					<fieldset>
+						<legend style="text-align: left">Select An Event Type</legend>
+						<select id="category" style="font-size:28px; font-family: Arial;">
+						  <option value="0">Select Event Type:</option>
+						  <option value="1">Food</option>
+		          <option value="2">Shopping</option>
+						  <option value="3">Movies</option>
+						  <option value="4">Night Life</option>
+						  <option value="5">Relaxation</option>
+						  <option value="6">Camping</option>
+						  <option value="7">Parks</option>
+							<option value="8">Bars</option>
+						  <option value="9">Local Attractions</option>
+						</select>
+					</fieldset>
+					<br><br>
+					<fieldset>
+						<legend style="text-align: left">Select a maxiumum cost category</legend>
+						<input type="radio" value"$" name="cost" onclick="costSelection(this.value)" />
+			      <label for="$">$</label>
+			      <input type="radio" value="$$" name="cost" onclick="costSelection(this.value)" />
+			      <label for="$$">$$</label>
+				    <input type="radio" value="$$$" name="cost" onclick="costSelection(this.value)" />
+				    <label for="$$$">$$$</label>
+				    <input type="radio" value="$$$$" name="cost" onclick="costSelection(this.value)" />
+				     <label for="$$">$$$$</label>
+
+						Selected Cost Category: <input type="text" id="result" style="text-align: left">
+					</fieldset>
 					<br><br>
 				</div>
 				<div class="right column" style="text-align: center">
 				<br><br>
-					<input type="text" id="radius" style="font-size:36px; font-family: Arial;" placeholder="Enter in a search radius (meters)"></input>
+					<input type="text" id="radius" style="font-size:28px; font-family: Arial;" placeholder="Enter in a search radius (meters)"></input>
+				</div>
+				<br><br>
+				<div style="text-align: center">
+					<p id="userloc" style="font-size:28px; font-family: Arial;"></p>
 				</div>
 			</div>
 		</table>
@@ -45,15 +67,11 @@
 			SEARCH
 		</button>
 	  <input type="text" id="ZIP" style="font-size:36px; font-family: Arial;" placeholder="Enter in a ZIP code to search."></input>
-		<script async defer
-		src=
-"https://maps.googleapis.com/maps/api/js?key=AIzaSyCZc_SQlrTO7CchthZ4lyN3F73RDzjZSQM&callback=initMap&libraries=places">
-		</script>
 		<button onclick="usersetLocation()">
 			SET LOCATION
 		</button>
 		<!--The div element for the map -->
-		<div id="map" style="width:400px;height:400px;"></div>
+		<div id="map" style="width:400px;height:400px; margin: 0 auto 0 auto;"></div>
 	</body>
 	<footer>
 		FOOTER

@@ -3,7 +3,7 @@ var markers = [];
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 10
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -15,14 +15,16 @@ function initMap() {
         lng: position.coords.longitude
       };
 
+      displayAddress(pos['lat'], pos['lng']);
+
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('Your Location');
       infoWindow.open(map);
       map.setCenter(pos);
     }, function() {
-      displayAddress(pos['lat'], pos['long']);
       handleLocationError(true, infoWindow, map.getCenter());
     });
+
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
@@ -54,9 +56,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function displayAddress(lat, lng) {
   var latlng = new google.maps.LatLng(lat, lng);
-  geocoder.geocode({'latlng': latlng}, function(results, status) {
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
-        console.log(results)
         if(results[1]) {
             //formatted address
             var address = results[0].formatted_address;
@@ -72,12 +74,12 @@ function displayAddress(lat, lng) {
 
 var service;
 function Markers() {
-  clearMarkers();
+  //clearMarkers();
   //Get user-selected category that will we search the area with
   var category;
   switch(document.getElementById('category').value){
     case "1":
-      category = ['restaurant'];
+      category = ['cafe', 'restaurant'];
     break;
     case "2":
       category = ['clothing_store', 'shopping_mall', 'department_store']
@@ -108,20 +110,26 @@ function Markers() {
     return;
   }
 
-  if(Number(document.getElementById('radius').value) == NaN){
+  var rad = Number(document.getElementById('radius').value)
+  if(rad == NaN){
     alert("Please make sure that you are specifying a valid radius size using only numbers.");
     return;
   }
 
-  var request = {
-    location: pos,
-    radius: Number(document.getElementById('radius').value),
-    query: category
-  };
+  var request;
 
   //Do the actual search query
   service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
+  for (var i = 0; i < category.length; i++) {
+    request = {
+      location: pos,
+      radius: '500',
+      query: 'restaurant'
+    }
+    console.log([category[i]])
+    service.textSearch(request, callback);
+    console.log(markers.length)
+  }
 }
 
 //Callback function to submitting a google query
@@ -149,7 +157,7 @@ function createMarker(place) {
   });
 }
 
-function clearMarkers() {
+/*function clearMarkers() {
   setMapOnAll(null);
   markers = [];
 }
@@ -158,4 +166,4 @@ function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
   }
-}
+}*/
