@@ -1,4 +1,4 @@
-/*var geocoder;
+var geocoder;
 if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 } else {
@@ -35,4 +35,4 @@ function codeLatLng(lat, lng) {
           alert("Geocoder failed due to: " + status);
       }
     });
-}*/
+}
