@@ -59,7 +59,7 @@ function displayAddress(lat, lng) {
 
 var service;
 function Markers() {
-  //clearMarkers();
+  clearMarkers();
   //Get user-selected category that will we search the area with
   var category;
   switch(document.getElementById('category').value){
@@ -101,6 +101,8 @@ function Markers() {
     return;
   }
 
+  var price = document.getElementById('result').value;
+
   var request;
   //Do the actual search query
   service = new google.maps.places.PlacesService(map);
@@ -108,7 +110,8 @@ function Markers() {
     request = {
       location: pos,
       radius: rad,
-      query: category[i]
+      query: category[i],
+      maxPriceLevel: price.length
     }
     console.log([category[i]])
     service.textSearch(request, callback);
@@ -134,14 +137,14 @@ function createMarker(place) {
     map: map,
     position: place.geometry.location
   });
-  //markers.push(marker);
+  markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(place.name);
     infoWindow.open(map, this);
   });
 }
 
-/*function clearMarkers() {
+function clearMarkers() {
   setMapOnAll(null);
   markers = [];
 }
@@ -150,4 +153,4 @@ function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
   }
-}*/
+}
