@@ -59,7 +59,7 @@ function displayAddress(lat, lng) {
 
 var service;
 function Markers() {
-  clearMarkers();
+  //clearMarkers();
   //Get user-selected category that will we search the area with
   var category;
   switch(document.getElementById('category').value){
@@ -101,11 +101,7 @@ function Markers() {
     return;
   }
 
-  var request = {
-    location: pos,
-    radius: Number(document.getElementById('radius').value),
-    query: category
-  };
+  var request;
 
   //Do the actual search query
   service = new google.maps.places.PlacesService(map);
