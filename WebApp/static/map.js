@@ -58,6 +58,7 @@ function displayAddress(lat, lng) {
 var service;
 function Markers() {
   clearMarkers();
+  //Get user-selected category that will we search the area with
   var category;
   switch(document.getElementById('category').value){
     case "1":
@@ -103,19 +104,23 @@ function Markers() {
     query: category
   };
 
+  //Do the actual search query
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
 
+//Callback function to submitting a google query
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
+      //Create markers for each nearby place and put them on our map
       createMarker(results[i]);
     }
   }
 }
 
+//Create markers on the map with our returned queries
 function createMarker(place) {
   var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
