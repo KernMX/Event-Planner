@@ -64,7 +64,7 @@ function Markers() {
   var category;
   switch(document.getElementById('category').value){
     case "1":
-      category = ['cafe', 'restaurant'];
+      category = ['cafe', 'restaurant', 'meal_takeaway'];
     break;
     case "2":
       category = ['clothing_store', 'shopping_mall', 'department_store']
@@ -139,7 +139,9 @@ function createMarker(place) {
   });
   markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.setContent(place.name);
+    infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Address: ' + place.formatted_address + '<br>Phone: ' +
+                place.formatted_phone_number + '<br>Rating: ' + place.rating + '<br>Website: ' + place.website + '<br>Open Status:' + place.open_now + '</div>');
     infoWindow.open(map, this);
   });
 }
