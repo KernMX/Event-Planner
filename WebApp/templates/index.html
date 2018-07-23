@@ -1,9 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="static/index.css" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
 	</head>
 	<header>
 		<p>Welcome to Event Planner!</p>
@@ -11,19 +14,14 @@
 	</header>
 	<br>
 	<br>
-	<script src="static/map.js"></script>
-	<script src="static/datareset.js"></script>
-	<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcV8nC04DsKPmqoifu2Q3DatGJ8Oxz3T0&callback=initMap&libraries=places">
-  </script>
 
 	<body onload="dataReset(); initMap();">
 		<table>
 			<div class="Row">
 				<div class="left column" style="text-align: center">
 					<br><br>
-					<fieldset style="text-align: left">
-						<legend>Select An Event Type</legend>
+					<fieldset style="text-align: left; padding-bottom: 13px;">
+						<legend style="font-size: 16px;">Select An Event Type</legend>
 						<select id="category" style="font-size:28px; font-family: Arial;">
 						  <option value="0">Select Event Type:</option>
 						  <option value="1">Food</option>
@@ -36,9 +34,11 @@
 							<option value="8">Local Attractions</option>
 						</select>
 					</fieldset>
-					<br><br>
-					<fieldset style="text-align: left">
-						<legend>Select a maxiumum cost category</legend>
+					<div>
+						<br><br>
+					</div>
+					<fieldset style="text-align: left; padding-bottom: 11px;">
+						<legend style="font-size: 16px;">Select a maxiumum cost category</legend>
 						<input type="radio" value"$" name="cost" onclick="costSelection(this.value)" />
 			      <label for="$">$</label><br>
 			      <input type="radio" value="$$" name="cost" onclick="costSelection(this.value)" />
@@ -46,7 +46,7 @@
 				    <input type="radio" value="$$$" name="cost" onclick="costSelection(this.value)" />
 				    <label for="$$$">$$$</label><br>
 				    <input type="radio" value="$$$$" name="cost" onclick="costSelection(this.value)" />
-				     <label for="$$">$$$$</label><br>
+				     <label for="$$">$$$$</label><br><br>
 
 						Selected Cost Category: <input type="text" id="result" style="text-align: left">
 					</fieldset>
@@ -58,20 +58,164 @@
 					<input type="text" id="radius" style="font-size:28px; font-family: Arial;" placeholder="Radius (Meters)"></input>
 				</fieldset>
 				<br><br>
-				<fieldset style="text-align: left">
+				<fieldset style="text-align: left;">
 					<legend>Your Address</legend>
 					<p id="userloc" style="font-size:28px; font-family: Arial;"></p>
+				</fieldset>
+				<br><br>
 				</div>
 			</div>
 		</table>
-		<button onclick="Markers()" id="search">
+		<div style="margin: 0 auto 0 auto; float: center; padding-top: 5px;">
+			<button onclick="Markers()" id="search">
 			SEARCH
-		</button>
+			</button>
+		</div>
+		<br><br>
 		<!--The div element for the map -->
-		<div id="map" style="width:400px;height:400px; margin: 0 auto 0 auto;"></div>
+		<div id="map" style="width:400px;height:400px; margin: 0 auto 0 auto; float: center; padding-top: 5px;"></div>
+		<br><br>
+
 	</body>
-	<footer>
-		FOOTER
-	</footer>
+
+</html>
+=======
+=======
+>>>>>>> dca9afea9cc95fef76473cd68a8d30d2660ee3f0
+=======
+>>>>>>> dca9afea9cc95fef76473cd68a8d30d2660ee3f0
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="static/index.css" rel="stylesheet" type="text/css" />
+		<script src="static/map.js"></script>
+		<script src="static/datareset.js"></script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcV8nC04DsKPmqoifu2Q3DatGJ8Oxz3T0&callback=initMap&libraries=places">
+		</script>
+
+		<style>
+		html {
+			font-family: Arial;
+		}
+		 header {
+			padding: 2px 16px;
+			background-color: dodgerblue;
+			color: white;
+			text-align: center;
+			font-family: Arial;
+		}
+		body {
+			background: silver; /* For browsers that do not support gradients */
+			background: radial-gradient(white, silver, gray); /* Standard syntax (must be last) */
+		}
+		@media screen and (max-width: 900px) {
+			.column {
+				width: 100%;
+			}
+		}
+		p {
+			font-size: 48px;
+		}
+		.column {
+			float: left;
+		}
+		.left {
+			width: 50%;
+		}
+		.right {
+			width: 50%;
+		}
+		#map{
+			padding-top: 12px;
+			align-items: center;
+			text-align: center;
+			margin-right: 20px;
+		}
+		#search {
+			display: block;
+			cursor: pointer;
+			font-size:18px;
+			font-family: Arial;
+			background-color: dodgerblue;
+			color: white;
+			padding-top: 12px;
+			padding-bottom: 12px;
+
+		}
+		</style>
+	</head>
+	<header>
+		<p>Welcome to Event Planner!</p>
+		<h4>Created by: Max Kern, Jessica Doyal, John Siegel, Colin McNally</h4>
+	</header>
+	<br>
+	<br>
+
+	<body onload="dataReset(); initMap();">
+		<table>
+			<div class="Row">
+				<div class="left column" style="text-align: center">
+					<br><br>
+					<fieldset style="text-align: left; padding-bottom: 13px;">
+						<legend style="font-size: 16px;">Select An Event Type</legend>
+						<select id="category" style="font-size:28px; font-family: Arial;">
+						  <option value="0">Select Event Type:</option>
+						  <option value="1">Food</option>
+						  <option value="2">Shopping</option>
+						  <option value="3">Movies</option>
+						  <option value="4">Night Life</option>
+						  <option value="5">Relaxation</option>
+						  <option value="6">Camping</option>
+						  <option value="7">Parks</option>
+							<option value="8">Local Attractions</option>
+						</select>
+					</fieldset>
+					<div>
+						<br><br>
+					</div>
+					<fieldset style="text-align: left; padding-bottom: 11px;">
+						<legend style="font-size: 16px;">Select a maxiumum cost category</legend>
+						<input type="radio" value"$" name="cost" onclick="costSelection(this.value)" />
+			      <label for="$">$</label><br>
+			      <input type="radio" value="$$" name="cost" onclick="costSelection(this.value)" />
+			      <label for="$$">$$</label><br>
+				    <input type="radio" value="$$$" name="cost" onclick="costSelection(this.value)" />
+				    <label for="$$$">$$$</label><br>
+				    <input type="radio" value="$$$$" name="cost" onclick="costSelection(this.value)" />
+				     <label for="$$">$$$$</label><br><br>
+
+						Selected Cost Category: <input type="text" id="result" style="text-align: left">
+					</fieldset>
+				</div>
+				<div class="right column" style="text-align: center">
+				<br><br>
+				<fieldset style="text-align: left">
+					<legend>Enter A Search Radius (Meters)</legend>
+					<input type="text" id="radius" style="font-size:28px; font-family: Arial;" placeholder="Radius (Meters)"></input>
+				</fieldset>
+				<br><br>
+				<fieldset style="text-align: left;">
+					<legend>Your Address</legend>
+					<p id="userloc" style="font-size:28px; font-family: Arial;"></p>
+				</fieldset>
+				<br><br>
+				</div>
+			</div>
+		</table>
+		<div style="margin: 0 auto 0 auto; float: center; padding-top: 5px;">
+			<button onclick="Markers()" id="search">
+			SEARCH
+			</button>
+
+		</div>
+		<br><br>
+		<!--The div element for the map -->
+		<div id="map" style="width:900px;height:500px; margin: 0 auto 0 auto; float: center; padding-top: 5px;"></div>
+		<br><br>
+
+	</body>
 
 </html>
