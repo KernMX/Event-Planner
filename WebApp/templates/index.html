@@ -4,6 +4,35 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="static/index.css" rel="stylesheet" type="text/css" />
+		<style>
+		 header {
+			padding: 2px 16px;
+			background-color: dodgerblue;
+			color: white;
+			text-align: center;
+		}
+		
+		@media screen and (max-width: 600px) {
+			.column {
+				width: 100%;
+			}
+		}
+		
+		.column {
+			float: left;
+		}
+
+		.left {
+			width: 50%;
+		}
+		.right {
+			width: 50%;
+		}
+
+		html {
+			background-color: silver;
+		}
+		</style>
 	</head>
 	<header style="font-family: Arial";>
 		<p style="font-size: 48px">Welcome to Event Planner!</p>
@@ -27,7 +56,7 @@
 						<select id="category" style="font-size:28px; font-family: Arial;">
 						  <option value="0">Select Event Type:</option>
 						  <option value="1">Food</option>
-		          <option value="2">Shopping</option>
+						  <option value="2">Shopping</option>
 						  <option value="3">Movies</option>
 						  <option value="4">Night Life</option>
 						  <option value="5">Relaxation</option>
