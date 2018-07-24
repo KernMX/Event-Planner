@@ -1,29 +1,47 @@
+html {
+	font-family: Arial;
+}
  header {
 	padding: 2px 16px;
 	background-color: dodgerblue;
 	color: white;
 	text-align: center;
-
- }
-
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
+	font-family: Arial;
 }
-
+body {
+	background: silver; /* For browsers that do not support gradients */
+	background: radial-gradient(white, silver, gray); /* Standard syntax (must be last) */
+}
+@media screen and (max-width: 900px) {
+	.column {
+		width: 100%;
+	}
+}
+p {
+	font-size: 48px;
+}
 .column {
-    float: left;
+	float: left;
 }
-
 .left {
-    width: 50%;
-
+	width: 50%;
 }
 .right {
 	width: 50%;
 }
-
-html {
-	background-color: silver;
+#map{
+	padding-top: 12px;
+	align-items: center;
+	text-align: center;
+	margin-right: 20px;
+}
+#search {
+	display: block;
+	cursor: pointer;
+	font-size:18px;
+	font-family: Arial;
+	background-color: dodgerblue;
+	color: white;
+	padding-top: 12px;
+	padding-bottom: 12px;
 }
