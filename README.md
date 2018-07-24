@@ -1,27 +1,23 @@
 # Event-Planner
 Event Planner WebApp Created by Max Kern, Jessica Doayl, Colin McNally, and John Siegel
 
-INSTRUCTIONS:
+## Instructions:
 
-Before Running the WebApp:
+### **Windows:**
 
-1) download and install Python 3.#.  https://www.python.org/downloads/
+1. Download and save the repository in the Documents folder.
+2. Download and install [Python 3.#](https://www.python.org/downloads/)
+3. Download and install [node.js](https://nodejs.org/en/download/)
+4. Download and install [Git Bash](https://gitforwindows.org/)
+5. Run Git Bash.
+6. Run the following commands (in order) inside of the Git Bash terminal: 
 
-2) download and install node.js.  https://nodejs.org/en/download/
+      `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`  
+      `python get-pip.py`  
+      `python -m pip install flask`  
+      `cd Document/Event-Planner/WebApp`  
+      `python app.py`
 
-3) open the command prompt.
+7. highlight over `http://127.0.0.1:5000/` in the Git Bash terminal `right click` and select `Open`
 
-4) run the following commands: 
-
-      pip install flask
-      npm install google-search-scraper
-
-Running the WebApp:
-
-1) clone or download the git repository.
-
-2) open up the command prompt.
-
-2) via the command line navigate to the downloaded/cloned repository's WebApp folder.
-
-3) run the following command: python app.py.
+#### If the keyword `python` does not work then use the keyword `py`
