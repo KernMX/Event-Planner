@@ -45,3 +45,11 @@ p {
 	padding-top: 12px;
 	padding-bottom: 12px;
 }
+legend{
+	font-weight: bold;
+	font-size: 18px;
+}
+fieldset{
+	text-align: left;
+	padding-bottom: 11px;"
+}

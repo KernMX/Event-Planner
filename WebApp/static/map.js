@@ -1,4 +1,4 @@
-var map, infoWindow, pos
+var map, infoWindow, pos, service;
 var markers = [];
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -6,6 +6,7 @@ function initMap() {
     zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
+  service = new google.maps.places.PlacesService(map);
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -16,9 +17,6 @@ function initMap() {
       };
 
       displayAddress(pos['lat'], pos['lng']);
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Your Location');
       infoWindow.open(map);
       map.setCenter(pos);
     }, function() {
@@ -39,6 +37,33 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+function userLocationIcon(latlng, address = null) {
+  var customIcon = {
+    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+    fillColor: 'dodgerblue',
+    fillOpacity: 1.0,
+    scale: 8
+  }
+  var marker = new google.maps.Marker({
+    position: latlng,
+    icon: customIcon,
+    map: map
+  });
+  if(address){
+    google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.setContent(
+        '<div style="text-align: left; font-size: 18px; font-family: Arial;"><strong style="font-size: 28px; color: dodgerblue;">Your Location</strong><br><b>Address: </b>' + address + '</div>');
+      infoWindow.open(map, this);
+    });
+  } else {
+    google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.setContent(
+        '<div style="text-align: left; font-size: 18px; font-family: Arial;"><strong style="font-size: 28px; color: dodgerblue;">Your Location</strong><br><b>Latitude: </b>' + lat + '<br><b>Longitude: </b>' + lng + '</div>');
+      infoWindow.open(map, this);
+    });
+  }
+}
+
 function displayAddress(lat, lng) {
   var latlng = new google.maps.LatLng(lat, lng);
   var geocoder = new google.maps.Geocoder();
@@ -48,8 +73,10 @@ function displayAddress(lat, lng) {
             //formatted address
             var address = results[0].formatted_address;
             document.getElementById('userloc').innerHTML = "Your Address: " + address;
+            userLocationIcon(latlng, address);
         } else {
             document.getElementById('userloc').innerHTML = "Latitude: " + lat + " Longitude: " + lng;
+            userLocationIcon(latlng);
         }
     } else {
         alert("Geocoder failed due to: " + status);
@@ -57,7 +84,7 @@ function displayAddress(lat, lng) {
   });
 }
 
-var service;
+//var service;
 function Markers() {
   clearMarkers();
   //Get user-selected category that will we search the area with
@@ -103,9 +130,9 @@ function Markers() {
 
   var price = document.getElementById('result').value;
 
+  service = new google.maps.places.PlacesService(map);
   var request;
   //Do the actual search query
-  service = new google.maps.places.PlacesService(map);
   for (var i = 0; i < category.length; i++) {
     request = {
       location: pos,
@@ -113,9 +140,7 @@ function Markers() {
       query: category[i],
       maxPriceLevel: price.length
     }
-    console.log([category[i]])
     service.textSearch(request, callback);
-    console.log(markers.length)
   }
 }
 
@@ -130,6 +155,29 @@ function callback(results, status) {
   }
 }
 
+function getPriceLevel(place) {
+  switch(place.price_level) {
+    case 0:
+      return "Free";
+    break;
+    case 1:
+      return "Inexpensive";
+    break;
+    case 2:
+      return "Moderate";
+    break;
+    case 3:
+      return "Expensive";
+    break;
+    case 4:
+      return "Very Expensive";
+    break;
+    default:
+      return "None";
+    break;
+  }
+}
+
 //Create markers on the map with our returned queries
 function createMarker(place) {
   var placeLoc = place.geometry.location;
@@ -138,10 +186,11 @@ function createMarker(place) {
     position: place.geometry.location
   });
   markers.push(marker);
+  var cost = getPriceLevel(place);
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                'Address: ' + place.formatted_address + '<br>Phone: ' +
-                place.formatted_phone_number + '<br>Rating: ' + place.rating + '<br>Website: ' + place.website + '<br>Open Status:' + place.open_now + '</div>');
+    infoWindow.setContent('<div style="text-align: left; font-size: 18px; font-family: Arial;"><strong style="font-size: 28px; color: dodgerblue">' + place.name + '</strong><br>' +
+                '<b>Address: </b>' + place.formatted_address + '<br><b>Price Level: </b>' + cost +
+                '<br><b>Rating: </b>' + place.rating);
     infoWindow.open(map, this);
   });
 }
